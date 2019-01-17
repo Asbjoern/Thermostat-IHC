@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE utcs_project [
+   <!ELEMENT utcs_project ANY>
+   <!ATTLIST utcs_project version_major CDATA #REQUIRED
+                  version_minor CDATA #REQUIRED
+                  id1 CDATA #REQUIRED
+                  id2 CDATA #REQUIRED
+                  icon CDATA "_0x0"
+                  last_unique_id CDATA #REQUIRED>
+   <!ELEMENT modified ANY>
+   <!ATTLIST modified year CDATA #REQUIRED
+                  month CDATA #REQUIRED
+                  day CDATA #REQUIRED
+                  hour CDATA #REQUIRED
+                  minute CDATA #REQUIRED>
+   <!ELEMENT customer_info ANY>
+   <!ATTLIST customer_info name CDATA ""
+                  address CDATA ""
+                  city CDATA ""
+                  zipcode CDATA ""
+                  country CDATA ""
+                  phone CDATA ""
+                  mobilephone CDATA ""
+                  email CDATA ""
+                  udf CDATA "">
+   <!ELEMENT installer_info ANY>
+   <!ATTLIST installer_info name CDATA ""
+                  address CDATA ""
+                  city CDATA ""
+                  zipcode CDATA ""
+                  country CDATA ""
+                  phone CDATA ""
+                  mobilephone CDATA ""
+                  email CDATA ""
+                  udf CDATA "">
+   <!ELEMENT project_info ANY>
+   <!ATTLIST project_info programmer CDATA ""
+                  number CDATA ""
+                  drawing CDATA ""
+                  type CDATA ""
+                  description CDATA ""
+                  udf CDATA "">
+   <!ELEMENT enum_definitions ANY>
+   <!ATTLIST enum_definitions id ID #REQUIRED
+                  name CDATA ""
+                  note CDATA ""
+                  udf CDATA "">
+   <!ELEMENT enum_definition ANY>
+   <!ATTLIST enum_definition id ID #REQUIRED
+                  typeid CDATA "_0x0"
+                  name CDATA ""
+                  note CDATA ""
+                  udf CDATA "">
+   <!ELEMENT enum_value ANY>
+   <!ATTLIST enum_value id ID #REQUIRED
+                  typeid CDATA "_0x0"
+                  name CDATA ""
+                  note CDATA ""
+                  index CDATA "0"
+                  udf CDATA "">
+   <!ELEMENT groups ANY>
+   <!ATTLIST groups id ID #REQUIRED
+                  name CDATA ""
+                  icon CDATA "_0x0"
+                  note CDATA ""
+                  udf CDATA "">
+   <!ELEMENT group ANY>
+   <!ATTLIST group id ID #REQUIRED
+                  name CDATA ""
+                  icon CDATA "_0x0"
+                  note CDATA ""
+                  udf CDATA "">
+   <!ELEMENT functionblock ANY>
+   <!ATTLIST functionblock id ID #REQUIRED
+                  name CDATA ""
+                  master_schneider_electric (yes | no) "no"
+                  master_type CDATA ""
+                  master_version CDATA ""
+                  master_name CDATA ""
+                  master_programmer CDATA ""
+                  master_date_year CDATA "0"
+                  master_date_month CDATA "0"
+                  master_date_day CDATA "0"
+                  locked (yes | no) "no"
+                  icon CDATA "_0x0"
+                  note CDATA ""
+                  helpfile CDATA ""
+                  udf CDATA "">
+   <!ELEMENT inputs ANY>
+   <!ATTLIST inputs id ID #REQUIRED
+                  name CDATA ""
+                  icon CDATA "_0x0"
+                  note CDATA ""
+                  udf CDATA "">
+   <!ELEMENT resource_input ANY>
+   <!ATTLIST resource_input id ID #REQUIRED
+                  name CDATA ""
+                  backup (yes | no) "no"
+                  icon CDATA "_0x0"
+                  note CDATA ""
+                  inivalue (on | off) "off"
+                  accessibility (read | write | read-write) "read-write"
+                  note-2 CDATA ""
+                  udf CDATA "">
+   <!ELEMENT outputs ANY>
+   <!ATTLIST outputs id ID #REQUIRED
+                  name CDATA ""
+                  icon CDATA "_0x0"
+                  note CDATA ""
+                  udf CDATA "">
+   <!ELEMENT resource_output ANY>
+   <!ATTLIST resource_output id ID #REQUIRED
+                  name CDATA ""
+                  backup (yes | no) "no"
+                  icon CDATA "_0x0"
+                  note CDATA ""
+                  inivalue (on | off) "off"
+                  accessibility (read | write | read-write) "read-write"
+                  note-2 CDATA ""
+                  udf CDATA "">
+   <!ELEMENT settings ANY>
+   <!ATTLIST settings id ID #REQUIRED
+                  name CDATA ""
+                  icon CDATA "_0x0"
+                  note CDATA ""
+                  udf CDATA "">
+   <!ELEMENT resource_timer ANY>
+   <!ATTLIST resource_timer id ID #REQUIRED
+                  name CDATA ""
+                  backup (yes | no) "no"
+                  icon CDATA "_0x0"
+                  note CDATA ""
+                  hour CDATA #REQUIRED
+                  minute CDATA #REQUIRED
+                  second CDATA #REQUIRED
+                  millisecond CDATA #REQUIRED
+                  note-2 CDATA ""
+                  udf CDATA "">
+   <!ELEMENT internalsettings ANY>
+   <!ATTLIST internalsettings id ID #REQUIRED
+                  name CDATA ""
+                  icon CDATA "_0x0"
+                  note CDATA ""
+                  udf CDATA "">
+   <!ELEMENT programs ANY>
+   <!ATTLIST programs id ID #REQUIRED
+                  name CDATA ""
+                  icon CDATA "_0x0"
+                  note CDATA ""
+                  udf CDATA "">
+   <!ELEMENT program_simple ANY>
+   <!ATTLIST program_simple id ID #REQUIRED
+                  name CDATA ""
+                  icon CDATA "_0x0"
+                  note CDATA ""
+                  udf CDATA "">
+   <!ELEMENT events ANY>
+   <!ATTLIST events id ID #REQUIRED
+                  name CDATA ""
+                  icon CDATA "_0x0"
+                  note CDATA ""
+                  udf CDATA "">
+   <!ELEMENT event ANY>
+   <!ATTLIST event id ID #REQUIRED
+                  name CDATA ""
+                  icon CDATA "_0x0"
+                  note CDATA ""
+                  link1 IDREF #IMPLIED
+                  link2 IDREF #IMPLIED
+                  method CDATA "_0x0"
+                  udf CDATA "">
+   <!ELEMENT actions ANY>
+   <!ATTLIST actions id ID #REQUIRED
+                  name CDATA ""
+                  icon CDATA "_0x0"
+                  note CDATA ""
+                  type CDATA "_0x0"
+                  udf CDATA "">
+   <!ELEMENT program_sub ANY>
+   <!ATTLIST program_sub id ID #REQUIRED
+                  name CDATA ""
+                  icon CDATA "_0x0"
+                  note CDATA ""
+                  udf CDATA "">
+   <!ELEMENT conditions ANY>
+   <!ATTLIST conditions id ID #REQUIRED
+                  name CDATA ""
+                  icon CDATA "_0x0"
+                  note CDATA ""
+                  type (and | or) "and"
+                  udf CDATA "">
+   <!ELEMENT condition ANY>
+   <!ATTLIST condition id ID #REQUIRED
+                  name CDATA ""
+                  icon CDATA "_0x0"
+                  note CDATA ""
+                  link1 IDREF #IMPLIED
+                  link2 IDREF #IMPLIED
+                  method CDATA "_0x0"
+                  udf CDATA "">
+   <!ELEMENT action ANY>
+   <!ATTLIST action id ID #REQUIRED
+                  name CDATA ""
+                  icon CDATA "_0x0"
+                  note CDATA ""
+                  link1 IDREF #IMPLIED
+                  link2 IDREF #IMPLIED
+                  method CDATA "_0x0"
+                  udf CDATA "">
+   <!ELEMENT resource_temperature ANY>
+   <!ATTLIST resource_temperature id ID #REQUIRED
+                  name CDATA ""
+                  backup (yes | no) "no"
+                  note CDATA ""
+                  inivalue CDATA "0.00"
+                  accessibility (read | write | read-write) "read-write"
+                  setting (yes | no) "no"
+                  note-2 CDATA ""
+                  udf CDATA "">
+   <!ELEMENT resource_timertime ANY>
+   <!ATTLIST resource_timertime id ID #REQUIRED
+                  name CDATA ""
+                  backup (yes | no) "no"
+                  icon CDATA "_0x0"
+                  note CDATA ""
+                  hour CDATA #REQUIRED
+                  minute CDATA #REQUIRED
+                  second CDATA #REQUIRED
+                  millisecond CDATA #REQUIRED
+                  note-2 CDATA ""
+                  udf CDATA "">
+   <!ELEMENT documentation_modules ANY>
+   <!ATTLIST documentation_modules id ID #REQUIRED
+                  name CDATA ""
+                  icon CDATA "_0x0"
+                  note CDATA ""
+                  udf CDATA "">
+   <!ELEMENT dataline_input_modules ANY>
+   <!ATTLIST dataline_input_modules id ID #REQUIRED
+                  name CDATA ""
+                  icon CDATA "_0x0"
+                  note CDATA ""
+                  udf CDATA "">
+   <!ELEMENT dataline_output_modules ANY>
+   <!ATTLIST dataline_output_modules id ID #REQUIRED
+                  name CDATA ""
+                  icon CDATA "_0x0"
+                  note CDATA ""
+                  udf CDATA "">
+]>
+<utcs_project version_major="4" version_minor="0" id1="_0x11080316" id2="_0x110c2d39" last_unique_id="_0x534">
+   <modified year="2019" month="1" day="17" hour="12" minute="45"/>
+   <customer_info/>
+   <installer_info/>
+   <project_info programmer="am"/>
+   <enum_definitions id="_0x3046" name="Enumerator definitioner">
+      <enum_definition id="_0x4447" typeid="_0x10" name="Persienne tilstand">
+         <enum_value id="_0x4548" typeid="_0x11" name="Ukendt"/>
+         <enum_value id="_0x4648" typeid="_0x12" name="Oppe" index="1"/>
+         <enum_value id="_0x4748" typeid="_0x13" name="Nede" index="2"/>
+         <enum_value id="_0x4848" typeid="_0x14" name="Kører op" index="3"/>
+         <enum_value id="_0x4948" typeid="_0x15" name="Kører ned" index="4"/>
+      </enum_definition>
+      <enum_definition id="_0x4a47" typeid="_0x16" name="Logning">
+         <enum_value id="_0x4b48" typeid="_0x17" name="Off"/>
+         <enum_value id="_0x4c48" typeid="_0x18" name="Kun ændringer" index="1"/>
+         <enum_value id="_0x4d48" typeid="_0x19" name="Hver Time" index="2"/>
+         <enum_value id="_0x4e48" typeid="_0x20" name="Dagligt" index="3"/>
+         <enum_value id="_0x4f48" typeid="_0x21" name="Ugentligt" index="4"/>
+         <enum_value id="_0x5048" typeid="_0x22" name="Månedligt" index="5"/>
+      </enum_definition>
+      <enum_definition id="_0x5247" name="Driftstilstand DK - 3">
+         <enum_value id="_0x5348" name="Beboet"/>
+         <enum_value id="_0x5448" name="Ubeboet" index="1"/>
+         <enum_value id="_0x5548" name="Frostsikring" index="2"/>
+         <enum_value id="_0x5648" name="Gæster" index="3"/>
+         <enum_value id="_0x5748" name="Ventilmotion" index="5"/>
+         <enum_value id="_0x5848" name="Test" index="4"/>
+      </enum_definition>
+      <enum_definition id="_0x5947" name="Overstyring ved:">
+         <enum_value id="_0x5a48" name="Kun ved Beboet" index="2"/>
+         <enum_value id="_0x5b48" name="Ved Beboet og Ubeboet" index="5"/>
+         <enum_value id="_0x5c48" name="Altid"/>
+         <enum_value id="_0x5d48" name="Kun ved Ubeboet" index="3"/>
+         <enum_value id="_0x5e48" name="Kun ved Frostsikring" index="4"/>
+         <enum_value id="_0x5f48" name="Ikke aktiv" index="1"/>
+      </enum_definition>
+      <enum_definition id="_0x6047" name="Temperatur ønske">
+         <enum_value id="_0x6148" name="Normal"/>
+         <enum_value id="_0x6248" name="Nat" index="1"/>
+         <enum_value id="_0x6348" name="Dag- og gæstetilstand" index="2"/>
+      </enum_definition>
+      <enum_definition id="_0x6447" name="Overstyring mulig:">
+         <enum_value id="_0x6548" name="Altid"/>
+         <enum_value id="_0x6648" name="Kun sommer" index="1"/>
+         <enum_value id="_0x6748" name="Kun vinter" index="2"/>
+      </enum_definition>
+      <enum_definition id="_0x6847" name="Sommer">
+         <enum_value id="_0x6948" name="Off" index="1"/>
+         <enum_value id="_0x6a48" name="On"/>
+      </enum_definition>
+      <enum_definition id="_0x6b47" name="Pulsvarme">
+         <enum_value id="_0x6c48" name="Pulsvarme til"/>
+         <enum_value id="_0x6d48" name="Pulsvarme fra" index="1"/>
+      </enum_definition>
+      <enum_definition id="_0x6e47" name="Regulering">
+         <enum_value id="_0x6f48" name="Gulv" index="2"/>
+         <enum_value id="_0x7048" name="Rum og gulv"/>
+         <enum_value id="_0x7148" name="Rum" index="1"/>
+      </enum_definition>
+      <enum_definition id="_0x7247" name="Varme type">
+         <enum_value id="_0x7348" name="El-varme"/>
+         <enum_value id="_0x7448" name="Vandbåren varme" index="1"/>
+      </enum_definition>
+   </enum_definitions>
+   <groups id="_0x2031" name="Lokaliteter" icon="_0x15" note="Gruppering af produkter og funktionsblokke">
+      <group id="_0x2132" name="Stue" icon="_0x15">
+         <functionblock id="_0x3f328" name="6.4.01.a. Lyd-/lysblok med variabel puls" master_name="Lyd-/lysblok med variabel puls" master_programmer="am" master_date_year="2019" master_date_month="1" master_date_day="17" icon="_0xf" note="6.4.01.a. Lyd-/lysblok med variabel puls og pausetid&#xD;&#xA;&#xD;&#xA;Anvendelse:&#xD;&#xA;Lyd- eller lysblok med mulighed for at indstille puls og pausetid.&#xD;&#xA;&#xD;&#xA;For at se den fulde beskrivelse marker denne linje og tryk &quot;F1&quot;.&#xD;&#xA;Bemærk: Dette virker kun hvis &quot;Blokken&quot; er rød-markeret." helpfile="6. Alarm\6.4 Lydblokke\6.4.01.pdf">
+            <inputs id="_0x3f423" name="Input" icon="_0x4" note="Variablene i denne gruppering er input til funktionsblokken">
+               <resource_input id="_0x3f511" name="Indgang for start lydblok" icon="_0x36" note="Lydblok er aktiv så længe indgang er on&#xD;&#xA;(Udfyldes af installatøren)"/>
+            </inputs>
+            <outputs id="_0x3f624" name="Output" icon="_0x14" note="Variablene i denne gruppering er output fra funktionsblokken">
+               <resource_output id="_0x3f712" name="Lydgiver" icon="_0x39" note="Forbindes direkte til lydgiver."/>
+               <resource_output id="_0x3f812" name="Puls - On" icon="_0x39" note="Giver kort puls når Udgangen &quot;Lydgiver&quot; går on.&#xD;&#xA;Anvendes til styring af andre blokke."/>
+               <resource_output id="_0x3f912" name="Puls - Off" icon="_0x39" note="Giver kort puls når Udgangen &quot;Lydgiver&quot; går off.&#xD;&#xA;Anvendes til styring af andre blokke."/>
+            </outputs>
+            <settings id="_0x3fa25" name="Indstillinger" icon="_0xd" note="Variablene i denne gruppering er indstillinger til funktionsblokken">
+               <resource_timer id="_0x3fb10" name="Timertid for lyd-/lyspuls" icon="_0x43" note="Her indstilles hvor længe udgangen lydgiver skal være on" hour="0" minute="0" second="0" millisecond="150"/>
+               <resource_timer id="_0x3fc10" name="Timertid for pause mellem pulser" icon="_0x43" note="Her indstilles hvor længe udgangen lydgiver skal være off" hour="0" minute="0" second="3" millisecond="0"/>
+            </settings>
+            <internalsettings id="_0x3fd29" name="Interne variable" icon="_0x13" note="Variablene i denne gruppe er private variable til funktionsblokken">
+               <resource_timer id="_0x3fe10" name="Puls" icon="_0x43" hour="0" minute="0" second="0" millisecond="300"/>
+            </internalsettings>
+            <programs id="_0x3ff26" name="Programmer" icon="_0x19" note="Gruppering af funktionblokkens programmer">
+               <program_simple id="_0x4001e" name="Betinget program" icon="_0x7" note="Funktions beskrivelse">
+                  <events id="_0x40164" name="Hændelser" icon="_0xb" note="Hændelser som starter program">
+                     <event id="_0x402c8" name="%P -&gt; ON" icon="_0xc" note="Start program når %P antager værdien ON" link1="_0x3f511" method="_0xa"/>
+                     <event id="_0x403c8" name="%P -&gt; 0" icon="_0xc" note="Start program når %P antager tiden 0" link1="_0x3fc10" method="_0xa"/>
+                  </events>
+                  <actions id="_0x40466" name="Kommandoer" icon="_0x8" type="_0x2">
+                     <program_sub id="_0x4051f" name="Betinget kommando" icon="_0x7">
+                        <conditions id="_0x40665" name="Betingelser" icon="_0x16" note="Gruppering af betingelser til logisk test">
+                           <condition id="_0x407c9" name="%P = ON" icon="_0x1a" note="Betingelse at %P er ON" link1="_0x3f511" method="_0xa"/>
+                        </conditions>
+                        <actions id="_0x40866" name="Kommandoer ved betingelser sande" icon="_0x8" note="Gruppering af kommandoer som udføres når betingelser er sande" type="_0x1">
+                           <action id="_0x409ca" name="%P = ON" icon="_0x9" note="Sætter %P til ON" link1="_0x3f712" method="_0xa"/>
+                           <action id="_0x40aca" name="Sætter %P til Initialværdi og aktiver nedtælling" icon="_0x9" note="Sætter %P til Initialværdi og aktiver nedtælling" link1="_0x3fb10" method="_0xbe"/>
+                        </actions>
+                        <actions id="_0x40b66" name="Kommandoer ved betingelser falske" icon="_0x8" note="Gruppering af kommandoer som udføres når betingelser er falske"/>
+                     </program_sub>
+                  </actions>
+               </program_simple>
+               <program_simple id="_0x40c1e" name="Simpelt program" icon="_0x7" note="Funktions beskrivelse">
+                  <events id="_0x40d64" name="Hændelser" icon="_0xb" note="Hændelser som starter program">
+                     <event id="_0x40ec8" name="%P -&gt; 0" icon="_0xc" note="Start program når %P antager tiden 0" link1="_0x3fb10" method="_0xa"/>
+                  </events>
+                  <actions id="_0x40f66" name="Kommandoer" icon="_0x8" note="Gruppering af kommandoer som udføres når hændelse er indtruffet" type="_0x2">
+                     <action id="_0x410ca" name="%P = OFF" icon="_0x9" note="Sætter %P til OFF" link1="_0x3f712" method="_0x14"/>
+                     <action id="_0x411ca" name="Sætter %P til Initialværdi og aktiver nedtælling" icon="_0x9" note="Sætter %P til Initialværdi og aktiver nedtælling" link1="_0x3fc10" method="_0xbe"/>
+                  </actions>
+               </program_simple>
+               <program_simple id="_0x4121e" name="Puls - scenarie" icon="_0x7">
+                  <events id="_0x41364" name="Hændelser" icon="_0xb" note="Hændelser som starter program">
+                     <event id="_0x414c8" name="%P bliver ændret" icon="_0xc" note="Start program når %P skifter værdi" link1="_0x3f712" method="_0x96"/>
+                  </events>
+                  <actions id="_0x41566" name="Kommandoer" icon="_0x8" note="Gruppering af kommandoer som udføres når hændelse er indtruffet" type="_0x2">
+                     <program_sub id="_0x4161f" name="Under program" icon="_0x7">
+                        <conditions id="_0x41765" name="Betingelser" icon="_0x16" note="Gruppering af betingelser til logisk test">
+                           <condition id="_0x418c9" name="%P = ON" icon="_0x1a" note="Betingelse at %P er ON" link1="_0x3f712" method="_0xa"/>
+                        </conditions>
+                        <actions id="_0x41966" name="Kommandoer ved betingelser sande" icon="_0x8" note="Gruppering af kommandoer som udføres når betingelser er sande" type="_0x1">
+                           <action id="_0x41aca" name="%P = ON" icon="_0x9" note="Sætter %P til ON" link1="_0x3f812" method="_0xa"/>
+                        </actions>
+                        <actions id="_0x41b66" name="Kommandoer ved betingelser falske" icon="_0x8" note="Gruppering af kommandoer som udføres når betingelser er falske">
+                           <action id="_0x41cca" name="%P = ON" icon="_0x9" note="Sætter %P til ON" link1="_0x3f912" method="_0xa"/>
+                        </actions>
+                     </program_sub>
+                     <action id="_0x41dca" name="Aktiver nedtælling på %P med initial værdi" icon="_0x9" note="Aktiver nedtælling på %P med initial værdi" link1="_0x3fe10" method="_0xbe"/>
+                  </actions>
+               </program_simple>
+               <program_simple id="_0x41e1e" name="Program" icon="_0x7">
+                  <events id="_0x41f64" name="Hændelser" icon="_0xb" note="Hændelser som starter program">
+                     <event id="_0x420c8" name="%P -&gt; 0" icon="_0xc" note="Start program når %P skifter til 0" link1="_0x3fe10" method="_0xa"/>
+                  </events>
+                  <actions id="_0x42166" name="Kommandoer" icon="_0x8" note="Gruppering af kommandoer som udføres når hændelse er indtruffet" type="_0x2">
+                     <action id="_0x422ca" name="%P = OFF" icon="_0x9" note="Sætter %P til OFF" link1="_0x3f812" method="_0x14"/>
+                     <action id="_0x423ca" name="%P = OFF" icon="_0x9" note="Sætter %P til OFF" link1="_0x3f912" method="_0x14"/>
+                  </actions>
+               </program_simple>
+            </programs>
+         </functionblock>
+         <functionblock id="_0x4bb28" name="Send Setpunkt til termostat" master_date_year="2019" master_date_month="1" master_date_day="17" icon="_0xf">
+            <inputs id="_0x4bc23" name="Input" icon="_0x4" note="Variablene i denne gruppering er input til funktionsblokken">
+               <resource_temperature id="_0x4c814" name="Setpunkt" inivalue="5.00"/>
+               <resource_input id="_0x4ca11" name="Varme aktiv" icon="_0x36"/>
+            </inputs>
+            <outputs id="_0x4bd24" name="Output" icon="_0x14" note="Variablene i denne gruppering er output fra funktionsblokken">
+               <resource_output id="_0x4c912" name="Udgang" icon="_0x39"/>
+            </outputs>
+            <settings id="_0x4be25" name="Indstillinger" icon="_0xd" note="Variablene i denne gruppering er indstillinger til funktionsblokken"/>
+            <internalsettings id="_0x4bf29" name="Interne variable" icon="_0x13" note="Variablene i denne gruppe er private variable til funktionsblokken">
+               <resource_temperature id="_0x4e214" name="Nedtælling"/>
+               <resource_timer id="_0x4e410" name="Temperatur Timer" icon="_0x43" hour="0" minute="0" second="0" millisecond="500"/>
+               <resource_timer id="_0x51110" name="Varme aktiv Timer" icon="_0x43" hour="0" minute="0" second="0" millisecond="0"/>
+               <resource_timertime id="_0x51217" name="Varme ON" icon="_0x4d" hour="0" minute="0" second="0" millisecond="500"/>
+               <resource_timertime id="_0x51317" name="Varme OFF" icon="_0x4d" hour="0" minute="0" second="0" millisecond="250"/>
+               <resource_timer id="_0x53210" name="PauseTimer" icon="_0x43" hour="0" minute="0" second="0" millisecond="500"/>
+            </internalsettings>
+            <programs id="_0x4c026" name="Programmer" icon="_0x19" note="Gruppering af funktionblokkens programmer">
+               <program_simple id="_0x4c11e" name="Setpunkt ændres" icon="_0x7">
+                  <events id="_0x4c264" name="Hændelser" icon="_0xb" note="Hændelser som starter program">
+                     <event id="_0x4cdc8" name="%P bliver ændret" icon="_0xc" note="Start program når %P skifter værdi" link1="_0x4c814" method="_0x96"/>
+                  </events>
+                  <actions id="_0x4c366" name="Kommandoer" icon="_0x8" note="Gruppering af kommandoer som udføres når hændelse er indtruffet" type="_0x2">
+                     <action id="_0x4e5ca" name="%P = %S" icon="_0x9" note="Sætter %P til samme værdi som %S" link1="_0x4e214" link2="_0x4c814" method="_0x1e"/>
+                  </actions>
+               </program_simple>
+               <program_simple id="_0x4fc1e" name="Sæt signal" icon="_0x7">
+                  <events id="_0x4fd64" name="Hændelser" icon="_0xb" note="Hændelser som starter program">
+                     <event id="_0x4ffc8" name="%P bliver ændret" icon="_0xc" note="Start program når %P skifter værdi" link1="_0x4e214" method="_0x96"/>
+                  </events>
+                  <actions id="_0x4fe66" name="Kommandoer" icon="_0x8" note="Gruppering af kommandoer som udføres når hændelse er indtruffet" type="_0x2">
+                     <program_sub id="_0x4e61f" name="Send varme status" icon="_0x7">
+                        <conditions id="_0x4e765" name="Betingelser" icon="_0x16" note="Gruppering af betingelser til logisk test">
+                           <condition id="_0x529c9" name="%P &gt; %S" icon="_0x1a" note="Betingelse at %P er større end %S" link1="_0x4e214" link2="_0x52a14" method="_0x32">
+                              <resource_temperature id="_0x52a14" name="Temperatur"/>
+                           </condition>
+                        </conditions>
+                        <actions id="_0x4e866" name="Kommandoer ved betingelser sande" icon="_0x8" note="Gruppering af kommandoer som udføres når betingelser er sande" type="_0x1">
+                           <action id="_0x4f6ca" name="Aktiver nedtælling på %P med initial værdi" icon="_0x9" note="Aktiver nedtælling på %P med initial værdi" link1="_0x4e410" method="_0xbe"/>
+                           <action id="_0x4efca" name="%P = ON" icon="_0x9" note="Sætter %P til ON" link1="_0x4c912" method="_0xa"/>
+                        </actions>
+                        <actions id="_0x4e966" name="Kommandoer ved betingelser falske" icon="_0x8" note="Gruppering af kommandoer som udføres når betingelser er falske">
+                           <action id="_0x4f0ca" name="%P = OFF" icon="_0x9" note="Sætter %P til OFF" link1="_0x4c912" method="_0x14"/>
+                           <action id="_0x533ca" name="Aktiver nedtælling på %P med initial værdi" icon="_0x9" note="Aktiver nedtælling på %P med initial værdi" link1="_0x53210" method="_0xbe"/>
+                        </actions>
+                     </program_sub>
+                  </actions>
+               </program_simple>
+               <program_simple id="_0x5091e" name="Loop" icon="_0x7">
+                  <events id="_0x50a64" name="Hændelser" icon="_0xb" note="Hændelser som starter program">
+                     <event id="_0x50cc8" name="%P -&gt; 0" icon="_0xc" note="Start program når %P skifter til 0" link1="_0x4e410" method="_0xa"/>
+                  </events>
+                  <actions id="_0x50b66" name="Kommandoer" icon="_0x8" note="Gruppering af kommandoer som udføres når hændelse er indtruffet" type="_0x2">
+                     <action id="_0x4edca" name="%P = %P - %S" icon="_0x9" note="Sætter %P til sin egen værdi minus %S" link1="_0x4e214" link2="_0x4ee14" method="_0x64">
+                        <resource_temperature id="_0x4ee14" name="Temperatur" inivalue="0.50"/>
+                     </action>
+                  </actions>
+               </program_simple>
+               <program_simple id="_0x50d1e" name="Varmesignal ændret" icon="_0x7">
+                  <events id="_0x50e64" name="Hændelser" icon="_0xb" note="Hændelser som starter program">
+                     <event id="_0x510c8" name="%P bliver ændret" icon="_0xc" note="Start program når %P skifter værdi" link1="_0x4ca11" method="_0x96"/>
+                     <event id="_0x534c8" name="%P -&gt; 0" icon="_0xc" note="Start program når %P skifter til 0" link1="_0x53210" method="_0xa"/>
+                  </events>
+                  <actions id="_0x50f66" name="Kommandoer" icon="_0x8" note="Gruppering af kommandoer som udføres når hændelse er indtruffet" type="_0x2">
+                     <program_sub id="_0x5141f" name="Sæt udgang" icon="_0x7">
+                        <conditions id="_0x51565" name="Betingelser" icon="_0x16" note="Gruppering af betingelser til logisk test">
+                           <condition id="_0x518c9" name="%P = ON" icon="_0x1a" note="Betingelse at %P er ON" link1="_0x4ca11" method="_0xa"/>
+                        </conditions>
+                        <actions id="_0x51666" name="Kommandoer ved betingelser sande" icon="_0x8" note="Gruppering af kommandoer som udføres når betingelser er sande" type="_0x1">
+                           <action id="_0x519ca" name="%P = %S" icon="_0x9" note="Sætter %P til samme værdi som %S" link1="_0x51110" link2="_0x51217" method="_0x1e"/>
+                        </actions>
+                        <actions id="_0x51766" name="Kommandoer ved betingelser falske" icon="_0x8" note="Gruppering af kommandoer som udføres når betingelser er falske">
+                           <action id="_0x51aca" name="%P = %S" icon="_0x9" note="Sætter %P til samme værdi som %S" link1="_0x51110" link2="_0x51317" method="_0x1e"/>
+                        </actions>
+                     </program_sub>
+                     <action id="_0x51bca" name="Aktiver nedtælling på %P" icon="_0x9" note="Aktiver nedtælling på %P" link1="_0x51110" method="_0xd2"/>
+                     <action id="_0x520ca" name="%P = ON" icon="_0x9" note="Sætter %P til ON" link1="_0x4c912" method="_0xa"/>
+                  </actions>
+               </program_simple>
+               <program_simple id="_0x51c1e" name="Sluk varme signal udgang" icon="_0x7">
+                  <events id="_0x51d64" name="Hændelser" icon="_0xb" note="Hændelser som starter program">
+                     <event id="_0x51fc8" name="%P -&gt; 0" icon="_0xc" note="Start program når %P skifter til 0" link1="_0x51110" method="_0xa"/>
+                  </events>
+                  <actions id="_0x51e66" name="Kommandoer" icon="_0x8" note="Gruppering af kommandoer som udføres når hændelse er indtruffet" type="_0x2">
+                     <program_sub id="_0x5221f" name="Sluk ikke hvis temperatur overføres" icon="_0x7">
+                        <conditions id="_0x52365" name="Betingelser" icon="_0x16" note="Gruppering af betingelser til logisk test">
+                           <condition id="_0x527c9" name="%P &gt; %S" icon="_0x1a" note="Betingelse at %P er større end %S" link1="_0x4e214" link2="_0x52814" method="_0x32">
+                              <resource_temperature id="_0x52814" name="Temperatur"/>
+                           </condition>
+                        </conditions>
+                        <actions id="_0x52466" name="Kommandoer ved betingelser sande" icon="_0x8" note="Gruppering af kommandoer som udføres når betingelser er sande" type="_0x1"/>
+                        <actions id="_0x52566" name="Kommandoer ved betingelser falske" icon="_0x8" note="Gruppering af kommandoer som udføres når betingelser er falske">
+                           <action id="_0x521ca" name="%P = OFF" icon="_0x9" note="Sætter %P til OFF" link1="_0x4c912" method="_0x14"/>
+                        </actions>
+                     </program_sub>
+                  </actions>
+               </program_simple>
+            </programs>
+         </functionblock>
+      </group>
+      <group id="_0x2232" name="Entré" icon="_0x15"/>
+      <group id="_0x2332" name="Køkken" icon="_0x15"/>
+      <group id="_0x2432" name="Soveværelse" icon="_0x15"/>
+      <group id="_0x2532" name="Værelse" icon="_0x15"/>
+      <group id="_0x2632" name="Bad" icon="_0x15"/>
+      <group id="_0x2732" name="Bryggers" icon="_0x15"/>
+      <group id="_0x2832" name="Garage" icon="_0x15"/>
+      <group id="_0x2932" name="Kælder" icon="_0x15"/>
+      <group id="_0x2a32" name="Udendørs" icon="_0x15"/>
+   </groups>
+   <documentation_modules id="_0x4134">
+      <dataline_input_modules id="_0x4235"/>
+      <dataline_output_modules id="_0x4336"/>
+   </documentation_modules>
+</utcs_project>

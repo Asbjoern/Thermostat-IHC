@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE product_dataline[
+   <!ELEMENT product_dataline ANY>
+   <!ATTLIST product_dataline id ID #REQUIRED
+                  product_identifier CDATA #REQUIRED
+                  name CDATA ""
+                  locked (yes | no) "yes"
+                  enduser_report (yes | no) "no"
+                  icon CDATA ""
+                  note CDATA ""
+                  position CDATA ""
+                  documentation_tag CDATA ""
+                  power_group CDATA ""
+                  cabletype CDATA ""
+                  cablenumber CDATA "">
+   <!ELEMENT dataline_input ANY>
+   <!ATTLIST dataline_input id ID #REQUIRED
+                  name CDATA ""
+                  note CDATA ""
+                  inivalue (on | off) "off"
+                  address_dataline CDATA "_0x0"
+                  cable_colour CDATA "">
+   <!ELEMENT dataline_output ANY>
+   <!ATTLIST dataline_output id ID #REQUIRED
+                  name CDATA ""
+                  note CDATA ""
+                  inivalue (on | off) "off"
+                  backup (yes | no) "yes"
+                  type (led | unspecified) "unspecified"
+                  address_dataline CDATA "_0x0"
+                  cable_colour CDATA "">
+   <!ELEMENT resource_temperature ANY>
+   <!ATTLIST resource_temperature id ID #REQUIRED
+                  name CDATA ""
+                  note CDATA ""
+                  backup (yes | no) "no"
+                  inivalue CDATA "20.00"
+                  accessibility (read | write | read-write) "read-write">
+   <!ELEMENT resource_input ANY>
+   <!ATTLIST resource_input id ID #REQUIRED
+                  name CDATA ""
+                  backup (yes | no) "no"
+                  icon CDATA "_0x0"
+                  note CDATA ""
+                  inivalue (on | off) "off"
+                  accessibility (read | write | read-write) "read-write">
+   <!ELEMENT settings ANY>
+   <!ATTLIST settings id ID #REQUIRED
+                  name CDATA ""
+                  note CDATA "">
+]>
+<product_dataline id="_0x01" product_identifier="_0x2122" name="Temperatursensor (med gulvtemperatur)" note="Temperatursensor med romtemperatur, gulvtemperatur og setpunkt" icon="_0x83">
+  <resource_temperature id="_0x02" name="Romtemperatur" note="" accessibility="read" />
+  <resource_temperature id="_0x03" name="Gulvtemperatur" note="" accessibility="read" />
+  <resource_temperature id="_0x04" name="Setpunkttemperatur" note="" accessibility="read" />
+  <resource_input id="_0x05" name="Alarm" note="PÅ ved alarm" accessibility="read" />
+  <settings id="_0x10" name="Innstillinger" note="Produktinnstillinger">
+    <dataline_input id="_0x11" name="Temperatursensorinput" />
+  </settings>
+</product_dataline>
