@@ -31,14 +31,16 @@ DallasTemperature ds18b20(&oneWire);
 
 void setup() {
   display.init();
-  data.lux = 30.3;
+  data.lux = 30;
   data.roomTemp = 23.2;
-  data.setpointTemp = 22.0;
+  data.setpointTemp = 0.0;
   data.floorTemp = 34.3;
   data.heating = false;
   data.humidity = 66;
   IHCinit();
   IHCsetData(data);
+  pinMode(IN1, INPUT);
+  digitalWrite(IN1, HIGH);
   pinMode(BTN_LEFT, INPUT);
   pinMode(BTN_RIGHT, INPUT);
   attachPinChangeInterrupt(digitalPinToPinChangeInterrupt(BTN_LEFT), down_btn, RISING);
@@ -71,7 +73,7 @@ void configureOPT3001() {
   newConfig.ModeOfConversionOperation = B11;
 
   /*OPT3001_ErrorCode errorConfig = */ opt3001.writeConfig(newConfig);
-  //OPT3001_Config sensorConfig = opt3001.readConfig();
+  OPT3001_Config sensorConfig = opt3001.readConfig();
 
 }
 

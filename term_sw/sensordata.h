@@ -6,7 +6,7 @@ class Sensordata {
       float setpointTemp;
       float floorTemp;
       float humidity;
-      float lux;
+      unsigned int lux;
       bool heating;
 };
 #endif

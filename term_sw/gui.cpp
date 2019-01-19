@@ -22,7 +22,7 @@ void Gui::update (const Sensordata data) {
   sp.replace('.',',');
   String floor = String(data.floorTemp,1) + "°";
   floor.replace('.',',');
-  String lx = String(data.lux,0) + "lx";
+  String lx = String(data.lux) + "lx";
   lx.replace('.',',');
   u8g2.clearBuffer();          // clear the internal memory
   u8g2.setFont(u8g2_font_helvR24_tf);  // choose a suitable font
