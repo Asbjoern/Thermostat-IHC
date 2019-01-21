@@ -6,6 +6,7 @@
 #define OUT2 4
 #define OUT3 3
 
+
 static uint8_t outdata[3][9];
 static int bitpos;
 static unsigned long starttime;
@@ -20,8 +21,6 @@ static void IHCAddBits(int ch, word value, int bits = 12);
 void IHCinit();
 static void IHCTick(void);
 
-void IHCsetData(Sensordata data);
-
-
+void IHCsetData(Sensordata &data);
 	
 #endif

@@ -3,7 +3,6 @@
 #include <TimerOne.h>
 #include "IHCsend.h"
 
-
 void IHCinit() {
 	memset(&outdata, 0, sizeof(outdata));
 	bitpos = 0;
@@ -43,16 +42,20 @@ static void IHCfillBuffer() {
   digitalWrite(OUT3,LOW);
 }
 
-void IHCsetData(Sensordata data){
+void IHCsetData(Sensordata &data){
   val1[0] = int(data.roomTemp*10.0 + 0.5);
+  if(data.roomTemp<0.)val1[0] |= 0x800;
   val2[0] = int(data.setpointTemp*10.0 + 0.5);
+  if(data.floorTemp<0.)val2[0] |= 0x800;
   val3[0] = int(data.floorTemp*10.0 + 0.5);
+  if(data.floorTemp<0.)val3[0] |= 0x800;
   val1[1] = val1[0];
   val2[1] = (data.lux>>5) & 0xfff;
   val3[1] = data.lux & 0x1f;
   val1[2] = val1[0];
   val2[2] = int(data.humidity*10.0 + 0.5);
   val3[2] = int((data.roomTemp-(100.-data.humidity)/5.)*10.0 + 0.5); //Simplified dew point calculation
+
 }
 
 int state=LOW;

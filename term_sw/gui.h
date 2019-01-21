@@ -12,12 +12,6 @@
 class Gui {
 private:
   void setSSD1306VcomDeselect(uint8_t v);
-  char setpoint[10];
-  char temp[10];
-  char floot[10];
-  char hum[5];
-  char lux[10];
-
 public:
   Gui();
   void init();
