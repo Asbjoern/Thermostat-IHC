@@ -9,6 +9,11 @@
 #include "gui.h"
 #include "IHCsend.h"
 
+volatile unsigned long pauseTimer;
+volatile unsigned long pulseTimer;
+volatile int receiveBuffer = 0;
+volatile int8_t bitcnt = 11;
+
 
 Sensordata data;
 Gui display;
@@ -33,18 +38,18 @@ void setup() {
   display.init();
   data.lux = 30;
   data.roomTemp = 23.2;
-  data.setpointTemp = 0.0;
+  data.setpointTemp = 19.1; //External controller should check on this value to detect reset
   data.floorTemp = 34.3;
   data.heating = false;
   data.humidity = 66;
   IHCinit();
   IHCsetData(data);
-  pinMode(IN1, INPUT);
-  digitalWrite(IN1, HIGH);
+  pinMode(IN1, INPUT_PULLUP);
   pinMode(BTN_LEFT, INPUT);
   pinMode(BTN_RIGHT, INPUT);
   attachPinChangeInterrupt(digitalPinToPinChangeInterrupt(BTN_LEFT), down_btn, RISING);
   attachPinChangeInterrupt(digitalPinToPinChangeInterrupt(BTN_RIGHT), up_btn, RISING);
+  attachPinChangeInterrupt(digitalPinToPinChangeInterrupt(IN1), input, CHANGE);
   opt3001.begin(OPT3001_ADDRESS);
   hdc1080.begin(HDC1080_ADDRESS);
   ds18b20.begin();
@@ -53,6 +58,7 @@ void setup() {
 }
 
 void loop() {
+
   ds18b20.requestTemperatures();
   data.roomTemp = hdc1080.readTemperature();
   data.humidity = hdc1080.readHumidity();
@@ -78,10 +84,37 @@ void configureOPT3001() {
 }
 
 void up_btn(){
-  if(data.setpointTemp <= SETPOINTMAX)
-    data.setpointTemp +=0.5;
+  data.setpointTemp = int(data.setpointTemp*2.+0.5)/2. + 0.5; //round to nearest half degree
+  if(data.setpointTemp > SETPOINTMAX)
+    data.setpointTemp = SETPOINTMAX;
 }
 void down_btn(){
-  if(data.setpointTemp >= SETPOINTMIN)
-    data.setpointTemp -=0.5;
+  data.setpointTemp = int(data.setpointTemp*2.+0.5)/2. - 0.5;//round to nearest half degree
+  if(data.setpointTemp < SETPOINTMIN)
+    data.setpointTemp = SETPOINTMIN;
+}
+void input(){
+  if(digitalRead(IN1) == LOW){
+    pulseTimer = millis();
+    if(millis() - pauseTimer > 500){
+      receiveBuffer = 0;
+      bitcnt = 11;
+    }
+  }
+  else{
+    pauseTimer = millis();
+    if(millis() - pulseTimer < 150)
+      bitClear(receiveBuffer,bitcnt--);
+    else if(millis() - pulseTimer < 250)
+      bitSet(receiveBuffer,bitcnt--);
+    else{
+      receiveBuffer = 0;
+      bitcnt = 11;
+    }
+    if(bitcnt<0){
+      data.heating = bitRead(receiveBuffer,11);
+      data.setpointTemp = float(receiveBuffer&0x3ff)/10.;
+      if(bitRead(receiveBuffer,10)) data.setpointTemp *=-1;
+    }
+  } 
 }
