@@ -1,0 +1,6 @@
+{
+    "programmer": "AVRISP mkII",
+    "board": "atmega:avr:atmega328",
+    "configuration": "clock=external20,cpu=atmega328p",
+    "sketch": "term_sw.ino"
+}

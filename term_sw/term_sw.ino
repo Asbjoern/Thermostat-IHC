@@ -14,6 +14,9 @@ volatile unsigned long pulseTimer;
 volatile int receiveBuffer = 0;
 volatile int8_t bitcnt = 11;
 
+int  resolution = 12;
+unsigned long lastTempRequest = 0;
+int  delayInMillis = 0;
 
 Sensordata data;
 Gui display;
@@ -21,6 +24,7 @@ ClosedCube_OPT3001 opt3001;
 ClosedCube_HDC1080 hdc1080;
 OneWire oneWire(7);
 DallasTemperature ds18b20(&oneWire);
+
 
 #define BTN_LEFT 8
 #define BTN_RIGHT 9
@@ -51,23 +55,35 @@ void setup() {
   attachPinChangeInterrupt(digitalPinToPinChangeInterrupt(BTN_RIGHT), up_btn, RISING);
   attachPinChangeInterrupt(digitalPinToPinChangeInterrupt(IN1), input, CHANGE);
   opt3001.begin(OPT3001_ADDRESS);
-  hdc1080.begin(HDC1080_ADDRESS);
-  ds18b20.begin();
-  hdc1080.setResolution(HDC1080_RESOLUTION_14BIT, HDC1080_RESOLUTION_14BIT);
   configureOPT3001();
+  hdc1080.begin(HDC1080_ADDRESS);
+  hdc1080.setResolution(HDC1080_RESOLUTION_14BIT, HDC1080_RESOLUTION_14BIT);
+  
+  ds18b20.begin();
+  DeviceAddress tempDeviceAddress;
+  ds18b20.getAddress(tempDeviceAddress, 0);
+  ds18b20.setResolution(tempDeviceAddress, resolution);
+  ds18b20.setWaitForConversion(false);
+  ds18b20.requestTemperatures();
+  delayInMillis = ds18b20.millisToWaitForConversion(resolution);
+  lastTempRequest = millis();   
 }
 
 void loop() {
-
-  ds18b20.requestTemperatures();
+  if (ds18b20.isConversionComplete() || millis() - lastTempRequest >= delayInMillis) // waited long enough??
+  //if(ds18b20.isConversionComplete())
+  {
+    data.floorTemp=ds18b20.getTempCByIndex(0);
+    ds18b20.requestTemperatures();
+    lastTempRequest = millis(); 
+    display.update(data);
+  }
+    
   data.roomTemp = hdc1080.readTemperature();
   data.humidity = hdc1080.readHumidity();
   data.lux=opt3001.readResult().lux;
-  data.floorTemp=ds18b20.getTempCByIndex(0);
-  display.update(data);
+  
   IHCsetData(data);
- //delay(1000);
-
 }
 
 void configureOPT3001() {
@@ -93,6 +109,7 @@ void down_btn(){
   if(data.setpointTemp < SETPOINTMIN)
     data.setpointTemp = SETPOINTMIN;
 }
+
 void input(){
   if(digitalRead(IN1) == LOW){
     pulseTimer = millis();
